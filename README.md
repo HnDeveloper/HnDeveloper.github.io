@@ -5,6 +5,8 @@
 - wangyuhan
 - xiekun
 - meijing
+- songxuefeng
+- xujiahui 
 
 
 - [x]   :octocat:  :squirrel:
