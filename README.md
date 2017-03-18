@@ -9,4 +9,4 @@
 
 - [x]   :octocat:  :squirrel:
 
-![](https://github.com/HnAndroid/Work-Summary/blob/master/path.gif?raw=true)
+![](https://github.com/HnAndroid/Work-Summary/blob/master/path.gif1?raw=true)
