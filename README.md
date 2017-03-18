@@ -2,10 +2,8 @@
 
 - liulonglong
 - yangshibai
-- wangyuhan
 - xiekun
 - meijing
-- songxuefeng
 - xujiahui 
 
 
