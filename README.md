@@ -7,3 +7,5 @@
 - 刘勇
 - 钟晓君
 - 张亿发
+
+[vlayout属性](https://github.com/alibaba/vlayout/blob/master/docs/ATTRIBUTES-ch.md)
