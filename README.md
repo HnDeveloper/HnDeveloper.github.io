@@ -1,12 +1,7 @@
-## 红鸟网络团队工作总结
-
+## 红鸟网络安卓开发团队成员
 - liulonglong
 - yangshibai
 - xiekun
 - meijing
 - xujiahui 
 
-
-- [x]   :octocat:  :squirrel:
-
-![](https://github.com/HnAndroid/Work-Summary/blob/master/path.gif1?raw=true)
