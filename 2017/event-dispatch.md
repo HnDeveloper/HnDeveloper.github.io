@@ -4,7 +4,7 @@
 
 
 一段伪代码反应整个touch事件的分发
-```Java
+```java
 public boolean dispatchTouchEvent(MotionEvent event) { 
     boolean consume = false;
     if (onInteceptTouchEvent(event)) { 
@@ -249,7 +249,8 @@ public boolean dispatchTouchEvent(MotionEvent ev) {
 ### activity对事件的分发过程
 
 activity的dispatchTouchEvent(MotionEvent ev)方法：
-```Java
+
+```java
 public boolean dispatchTouchEvent(MotionEvent ev) {
     if (ev.getAction() == MotionEvent.ACTION_DOWN) {
         onUserInteraction();
@@ -265,7 +266,7 @@ public boolean dispatchTouchEvent(MotionEvent ev) {
 
 Window是一个抽象类，他的实现类就是PhoneWindow，PhoneWindow中的superDispatchTouchEvent(ev)的方法：
 
-```Java
+```java
 public boolean superDispatchTouchEvent(MotionEvent ev){
     return mDecor.superDispatchTouchEvent(ev);
 }
