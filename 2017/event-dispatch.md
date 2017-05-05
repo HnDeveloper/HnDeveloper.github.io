@@ -20,7 +20,7 @@ public boolean dispatchTouchEvent(MotionEvent event) {
 ![image](http://img.blog.csdn.net/20130616154134500)
 
 
-```Java
+```java
 public boolean dispatchTouchEvent(MotionEvent event) {  
     if (mOnTouchListener != null && (mViewFlags & ENABLED_MASK) == ENABLED &&  
             mOnTouchListener.onTouch(this, event)) {  
@@ -35,7 +35,7 @@ public boolean dispatchTouchEvent(MotionEvent event) {
 
 
 onTouchEvent(MotionEvent event)的源码：
-```Java
+```java
 public boolean onTouchEvent(MotionEvent event) {  
     final int viewFlags = mViewFlags;  
     if ((viewFlags & ENABLED_MASK) == DISABLED) {  
@@ -133,7 +133,7 @@ public boolean onTouchEvent(MotionEvent event) {
 首先在第14行我们可以看出，如果该控件是可以点击的就会进入到第16行的switch判断中去，而如果当前的事件是抬起手指，则会进入到MotionEvent.ACTION_UP这个case当中。在经过种种判断之后，会执行到第38行的performClick()方法
 
 performClick()的源码：
-```Java
+```java
 public boolean performClick() {  
     sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_CLICKED);  
     if (mOnClickListener != null) {  
@@ -146,7 +146,7 @@ public boolean performClick() {
 ```
 
 `setOnClickListener(OnClickListener l)`的源码：
-```Java
+```java
 public void setOnClickListener(OnClickListener l) {  
     if (!isClickable()) {  
         setClickable(true);  
@@ -160,7 +160,7 @@ public void setOnClickListener(OnClickListener l) {
 ![image](http://img.blog.csdn.net/20130629154352906?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2lueXU4OTA4MDc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
 
-```Java
+```java
 public boolean dispatchTouchEvent(MotionEvent ev) {  
     final int action = ev.getAction();  
     final float xf = ev.getX();  
