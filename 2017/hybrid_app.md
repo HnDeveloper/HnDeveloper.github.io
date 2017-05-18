@@ -13,7 +13,7 @@ Hybrid App开发（混合模式移动应用开发）是指开发介于web-app、
 # 二、存在即合理，Hybrid开发的意义
 
 首先，我们看下Hybrid app和web-app、native-app之间的一些区别
-
+![](http://i.imgur.com/tVw4y3A.png)
 
 可见Hybrid app开发相比于其他开发还是好处多多的，那么它相比于Native开发的好处有哪些呢?
 
