@@ -33,7 +33,7 @@ Hybrid 开发可以使用第三方框架(此处不细讲，有兴趣的朋友可
 
 首先，别忘记加网络权限和引入webView.
 
-###Native调用JS
+### Native调用JS
 
 在4.4之前，调用的方式：
 ```java
@@ -58,7 +58,7 @@ Hybrid 开发可以使用第三方框架(此处不细讲，有兴趣的朋友可
 	});
 ```
 传统的Native调用JS还有个缺点就是不适合传输大量数据(大量数据建议用接口方式获取)。
-###JS调用Native
+### JS调用Native
 
 Native中通过addJavascriptInterface添加暴露出来的JS桥对象,然后再该对象内部声明对应的API方法。
 
@@ -120,6 +120,7 @@ JSBridge有一套现有的成熟方案,可以完美兼容各种版本，对以�
 至于js这三个方法的区别，可以详见w3c JavaScript 消息框 。一般来说，我们是不会使用onJsAlert的，为什么呢？因为js中alert使用的频率还是非常高的，一旦我们占用了这个通道，alert的正常使用就会受到影响，而confirm和prompt的使用频率相对alert来说，则更低一点。那么到底是选择confirm还是prompt呢，其实confirm的使用频率也是不低的，比如你点一个链接下载一个文件，这时候如果需要弹出一个提示进行确认，点击确认就会下载，点取消便不会下载，类似这种场景还是很多的，因此不能占用confirm。而prompt则不一样，在Android中，几乎不会使用到这个方法，就是用，也会进行自定义，所以我们完全可以使用这个方法。该方法就是弹出一个输入框，然后让你输入，输入完成后返回输入框中的内容。因此，占用prompt是再完美不过了。
 
 OK，找到突破口后，我们就开始实现通信，那么怎么实现呢？既然要通信，那么我们是不是得有通信协议呢？我们可以参考http 的样式http://host:port/path?param=value 来 规定一个属于我们自己的协议:
+
 ```java
 jsbridge://className:port/methodName?jsonObj
 ```
