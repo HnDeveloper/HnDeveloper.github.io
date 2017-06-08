@@ -162,7 +162,7 @@ HTTP定义了3种缓存机制：
 
 3. `Invalidation`： 在另一个请求通过缓存的时候，常常有一个副作用。例如，如果一个URL关联到一个缓存回应，但是其后跟着POST、PUT和DELETE的请求的话，缓存就会过期。
 
-## 关于HTTPS
+# 关于HTTPS
 
 ### 简介
 HTTPS（全称：Hypertext Transfer Protocol over Secure Socket Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL。
@@ -190,7 +190,7 @@ https所用的端口号是443。
 3）客户端到服务端的通信是安全的。
 
 
-## Android网络通信的方式
+# Android网络通信的方式
 Android SDK中的一些与网络有关的API包名
 
 
