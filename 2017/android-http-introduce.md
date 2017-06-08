@@ -216,4 +216,4 @@ Android.net.nfc |  包含所有用来管理近场通信相关的功能类
 
 ## 相关学习书籍
 
-[![link](https://img1.doubanio.com/lpic/s11329547.jpg)](http://note.youdao.com/)
+[![link](https://img1.doubanio.com/lpic/s11329547.jpg)](https://www.amazon.cn/HTTP%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E5%90%89%E5%B0%94%E5%88%A9/dp/B008XFDQ14/ref=sr_1_1?ie=UTF8&qid=1496911630&sr=8-1&keywords=HTTP)
