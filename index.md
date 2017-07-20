@@ -1,4 +1,5 @@
 ## 2017
+- 2017-07-20　[AIDL](2017/AIDL.md)
 - 2017-06-22　[设计原理+设计模式](2017/design_patterns.md)
 - 2017-06-08　[Android网络基础简介](2017/android-http-introduce.md)
 - 2017-05-18　[Hybrid 开发](2017/hybrid_app.md)
