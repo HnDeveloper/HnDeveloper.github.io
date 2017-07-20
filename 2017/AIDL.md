@@ -1,7 +1,6 @@
-# <center> <font   size=8 face="黑体"> AIDL</font></center >
+# AIDL
  
-
-  <font color=#FF0000 size=6 face="黑体">前言</font>
+## 前言
      
    * 在Android中每一个应用都拥有自己独立的jvm(java虚拟机)，都有其独立的内存地址空间,用于数据操作，但与其他应用不能直接进行通信，从而保证应用程序的数据安全性以及稳定性。
 
@@ -65,7 +64,7 @@
       * 采用Binder机制实现进程通信
 
  
-<font color=#FF0000 size=6 face="黑体">Binder是神马？</font> 
+## Binder是神马？ 
    
   * 定义 
     * 是Android系统中提供的一种进程间通信的机制，采用c/s架构模型，它提供了远程过程调用功能。这个机制有几部分完成，Client，Server，ServiceManager，bindDriver，bindDriver是binder的驱动程序，运行在Liunx内核空间（系统），Client，Service,ServiceManager运行在用户空间 
@@ -114,11 +113,11 @@
     接收方和发送方通过建立的公共缓存区，进行读写操作来进行数据共享的
     
 
- <font color=#FF0000 size=6 face="黑体">AIDL的定义</font> 
+## AIDL的定义
 
    * Android Interface Definition Language（Android 接口定义语言），定义了客户端与服务端的一个标准。
    
- <font color=#FF0000 size=6 face="黑体">特点 </font> 
+### 特点 
 
     优点：实现多应用之间进行跨进程通信  
 
@@ -157,7 +156,7 @@
 
  
 
-* <font color=#FF0000 size=6 face="黑体">如何实现AIDL?下面我们根据几个例子来看一下（基于Android Studio开发）</font>  
+ ## 如何实现AIDL?下面我们根据几个例子来看一下（基于Android Studio开发）
 
  #### 实例1:有两个应用应用A（客户端），应用B（服务端）。应用B用于当获取到客户端传过来的数据后进行数据计算并将结果返回给客户端，提供远程计算功能；应用A用于输入数据，并将数据传给应用B，获取返回值进行界面更新，提供原始数据，并显示功能。
  ![](http://i.imgur.com/CtdtXzs.png)
@@ -354,7 +353,7 @@
 
 
 
-* <font color=#FF0000 size=6 face="黑体">AIDL支持的数据类型：</font> 
+* AIDL支持的数据类型：
    
    *  基本类型：  
    
