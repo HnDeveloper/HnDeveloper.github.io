@@ -4,7 +4,7 @@
      
    * 在Android中每一个应用都拥有自己独立的jvm(java虚拟机)，都有其独立的内存地址空间,用于数据操作，但与其他应用不能直接进行通信，从而保证应用程序的数据安全性以及稳定性。
 
-  <font color=#FF0000 size=6 face="黑体">如何解决跨进程间的通信（两个应用之间进行数据通信）？</font>
+### 如何解决跨进程间的通信（两个应用之间进行数据通信）？
 
    * 采用AnoirdIPC机制实现进程间通信
    
@@ -124,12 +124,14 @@
     缺点：耗内存
 
  
-<font color=#FF0000 size=6 face="黑体">开发流程 </font> 
+#### 开发流程
+
 * 1.定义Aidl文件(先在服务端定义，然后再客户端定义，两端保持一致,其实所有的跨进程对象传递都是对象的序列化与反序列化  所以必须包名一致)
 * 2.服务端实现接口。
 * 3.客户端调用接口
 
-<font color=#FF0000 size=6 face="黑体">语法规则 </font> 
+#### 语法规则 
+
 * 1.语法与java的接口相似
 * 2.只支持方法声明，不支持静态成员的声明
 * 3.除了默认的基本数据类型外，其他的数据类型需要手动导包。
@@ -224,7 +226,6 @@
 ![](http://i.imgur.com/WXbWbpT.png)
 
 
-
   3.因为Android Studio对Aidl不能实现自动编译功能，所以写好之后aidl接口之后，需要将项目重新编译一下。编译之后我可以在项目的app\build\generated\source\aidl文件夹下查看到aidl文件所对应的java文件，它类似与R文件，我们无需创建，系统将自动为我们创建，从而使我们可以调用。（与服务端一样）
 
 
@@ -307,7 +308,7 @@
 
 ```
 
-  5.传递数据给服务端，并获取返回结果，更新界面。
+5.传递数据给服务端，并获取返回结果，更新界面。
 	
 ```java
 
@@ -339,7 +340,7 @@
 
  ```
 
- 6.运行服务端和客户端，进行测试
+6.运行服务端和客户端，进行测试
 
 ###   服务端：
 ![](http://i.imgur.com/Ktq3Mfj.png)
@@ -349,7 +350,10 @@
 ![](http://i.imgur.com/dHMyO1i.png)
 
 
-###  说明: 1.客户端访问服务端的前提是服务端应用要在客户端应用之前启用，否则将无法连接到服务；同时客户端能够调用服务端的方法，是因为客户端和服务端带运行中，一旦服务端被系统kill后，客户端将与其失去连接，从而无法服务访问器数据，<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;2.Binder运行在服务端进程，如果服务端进程由于某些原因异常终止，这个时候我们到服务端的Binder连接断裂，会导致我们的远程调用失败。Binder提供了两个配对的方法linkToDeath和unlinkToDeath，通过linkToDeath我们可以给Binder设置一个死亡代理，当Binder死亡时，我们会收到通知，这个时候我们就可以重新发起连接请求从而恢复连接。
+###  说明: 
+1.客户端访问服务端的前提是服务端应用要在客户端应用之前启用，否则将无法连接到服务；同时客户端能够调用服务端的方法，是因为客户端和服务端带运行中，一旦服务端被系统kill后，客户端将与其失去连接，从而无法服务访问器数据;
+
+2.Binder运行在服务端进程，如果服务端进程由于某些原因异常终止，这个时候我们到服务端的Binder连接断裂，会导致我们的远程调用失败。Binder提供了两个配对的方法linkToDeath和unlinkToDeath，通过linkToDeath我们可以给Binder设置一个死亡代理，当Binder死亡时，我们会收到通知，这个时候我们就可以重新发起连接请求从而恢复连接。
 
 
 
@@ -435,7 +439,6 @@
 5.在清单文件中注册该服务
 
 ```
-
         <service android:name=".IDataTypeService"
             android:enabled="true"
             android:exported="true">
@@ -586,7 +589,7 @@
    6.运行和测试
 ![](http://i.imgur.com/dDCQvRl.png)
 
-* <font color=#FF0000 size=6 face="黑体">AIDL的底层实现原理解析</font>
+## AIDL的底层实现原理解析
 
 
  ![](http://img1.ph.126.net/lERyHsQ9MvF9nKBjuc-oHQ==/6632468543514492859.png)
@@ -594,28 +597,26 @@
 
 ### 说明：
 
-* 1.服务端创建Aidl。编译生成所对应的java文件
+1.服务端创建Aidl。编译生成所对应的java文件
 
-* 2.生成的java文件其实是一个接口A，继承了android.os.Iinterface接口，里面声明实现了asBinder()方法，用于返回一个binder对象
+2.生成的java文件其实是一个接口A，继承了android.os.Iinterface接口，里面声明实现了asBinder()方法，用于返回一个binder对象
 
-* 3.接口A里面有一个内部抽象类（Stub）继承类android.os.Binder,同时实现了接口A。
+3.接口A里面有一个内部抽象类（Stub）继承类android.os.Binder,同时实现了接口A。
 
-* 4.当我们在service中 new  这个抽象类（Stub）时，其构造函数调用了
-	this.attachInterface(this, DESCRIPTOR)方法，将该接口A的实例存储到底层中。
-* 5.当客户端调用asinterface()时，会将服务端Binder的对象转换成客户端所需的AIDL接口类型的对象，但是转换的过程是区分进程的，若客户端和服务端处于同一进程，那么此方法将返回从obj.queryLocalInterface()中获取对象，否则返回是系统封装后的proxy代理对象
+4.当我们在service中 new  这个抽象类（Stub）时，其构造函数调用了`this.attachInterface(this, DESCRIPTOR)`方法，将该接口A的实例存储到底层中。
+
+5.当客户端调用asinterface()时，会将服务端Binder的对象转换成客户端所需的AIDL接口类型的对象，但是转换的过程是区分进程的，若客户端和服务端处于同一进程，那么此方法将返回从obj.queryLocalInterface()中获取对象，否则返回是系统封装后的proxy代理对象
       
-* 6.客户端获取实例后，调用方法进行数据传递时，该方法运行在客户端，首先会创建所需要的输入型Parcel对象_date，输出型Parcel对象_reply以及需要返回的结果对象，然后将客户端传入的数据写入到_data中，接着调用transact方法发起RPC（远程过程调用）请求，同时当前线程挂起（处于阻塞状态）；这时候服务端的onTransact()方法会被调用，知道RPC过程返回，当前继续执行，并从_reply中取出RPC过程返回的结果给客户端
+6.客户端获取实例后，调用方法进行数据传递时，该方法运行在客户端，首先会创建所需要的输入型Parcel对象_date，输出型Parcel对象_reply以及需要返回的结果对象，然后将客户端传入的数据写入到_data中，接着调用transact方法发起RPC（远程过程调用）请求，同时当前线程挂起（处于阻塞状态）；这时候服务端的onTransact()方法会被调用，知道RPC过程返回，当前继续执行，并从_reply中取出RPC过程返回的结果给客户端
 
-* 7.当服务端调用onTransact()时,该方法运行在服务端的Binder线程池中，当客户端发起跨进程请求时，远程请求会通过系统底层分装好后交由此方法处理，服务端通过code可以确定客户端所应求的目标方法是什么，然后从_data中取出目标方法所需要的参数，之后执行目标方法，当目标执行完成后向_reply写入数据，并返回boolean确定这次请求是否成功。
-
+7.当服务端调用onTransact()时,该方法运行在服务端的Binder线程池中，当客户端发起跨进程请求时，远程请求会通过系统底层分装好后交由此方法处理，服务端通过code可以确定客户端所应求的目标方法是什么，然后从_data中取出目标方法所需要的参数，之后执行目标方法，当目标执行完成后向_reply写入数据，并返回boolean确定这次请求是否成功。
 
 
  ## 参考链接：
-[http://blog.csdn.net/zizidemenghanxiao/article/details/50341773](http://blog.csdn.net/zizidemenghanxiao/article/details/50341773)
-
-[http://blog.csdn.net/coding_glacier/article/details/7520199](http://blog.csdn.net/coding_glacier/article/details/7520199 "Android Binder机制")
-
- [ https://juejin.im/entry/58257bd28ac247004f3a5129]( https://juejin.im/entry/58257bd28ac247004f3a5129 "binder机制")
+ 
+- [http://blog.csdn.net/zizidemenghanxiao/article/details/50341773](http://blog.csdn.net/zizidemenghanxiao/article/details/50341773)
+- [http://blog.csdn.net/coding_glacier/article/details/7520199](http://blog.csdn.net/coding_glacier/article/details/7520199 "Android Binder机制")
+- [ https://juejin.im/entry/58257bd28ac247004f3a5129]( https://juejin.im/entry/58257bd28ac247004f3a5129 "binder机制")
 
 
 
