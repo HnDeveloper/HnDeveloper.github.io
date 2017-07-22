@@ -613,8 +613,7 @@
 
 7.当服务端调用onTransact()时,该方法运行在服务端的Binder线程池中，当客户端发起跨进程请求时，远程请求会通过系统底层分装好后交由此方法处理，服务端通过code可以确定客户端所应求的目标方法是什么，然后从_data中取出目标方法所需要的参数，之后执行目标方法，当目标执行完成后向_reply写入数据，并返回boolean确定这次请求是否成功。
 
-
- ## 参考链接：
+## 参考链接：
  
 - [http://blog.csdn.net/zizidemenghanxiao/article/details/50341773](http://blog.csdn.net/zizidemenghanxiao/article/details/50341773)
 - [http://blog.csdn.net/coding_glacier/article/details/7520199](http://blog.csdn.net/coding_glacier/article/details/7520199 "Android Binder机制")
