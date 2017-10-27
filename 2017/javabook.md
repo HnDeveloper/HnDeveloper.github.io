@@ -1,3 +1,3 @@
-## The awesome Java book
+## The awesome Java books
 
 ![](../img/java.png)
