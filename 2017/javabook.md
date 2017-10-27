@@ -1,2 +1,2 @@
 
-![](img/java.png)
+![](../img/java.png)
