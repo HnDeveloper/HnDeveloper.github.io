@@ -1,4 +1,6 @@
 - **2017**
+
+  - 2017-12-29　[技术领导力](2017/Technical leadership.md)
   - 2017-10-27　[Java书单](2017/javabook.md)
   - 2017-08-03　[RxJava使用介绍](2017/rxjava_use_introduction.md)
   - 2017-07-20　[AIDL](2017/AIDL.md)
